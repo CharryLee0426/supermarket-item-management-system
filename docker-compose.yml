@@ -104,7 +104,7 @@ services:
 
   ## Eureka Server
   discovery-server:
-    image: registry.hub.docker.com/lichen0426/discovery-server:latest
+    image: discoveryserver:latest
     container_name: discovery-server
     ports:
       - "8761:8761"
@@ -114,7 +114,7 @@ services:
       - zipkin
 
   api-gateway:
-    image: registry.hub.docker.com/lichen0426/api-gateway:latest
+    image: apigateway:latest
     container_name: api-gateway
     ports:
       - "8181:8080"
@@ -131,7 +131,7 @@ services:
   ## Product-Service Docker Compose Config
   product-service:
     container_name: product-service
-    image: registry.hub.docker.com/lichen0426/product-service:latest
+    image: productservice:latest
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
@@ -142,7 +142,7 @@ services:
   ## Order-Service Docker Compose Config
   order-service:
     container_name: order-service
-    image: registry.hub.docker.com/lichen0426/order-service:latest
+    image: orderservice:latest
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-order:3308/order-service
@@ -156,7 +156,7 @@ services:
   ## Inventory-Service Docker Compose Config
   inventory-service:
     container_name: inventory-service
-    image: registry.hub.docker.com/lichen0426/inventory-service:latest
+    image: inventoryservice:latest
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-inventory:3307/inventory-service
@@ -168,7 +168,7 @@ services:
   ## Notification-Service Docker Compose Config
   notification-service:
     container_name: notification-service
-    image: registry.hub.docker.com/lichen0426/notification-service:latest
+    image: notificationservice:latest
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
